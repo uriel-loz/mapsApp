@@ -1,6 +1,11 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
+interface MarkerAndColor {
+  color: string,
+  marker: Marker
+}
+
 @Component({
   templateUrl: './markers.component.html',
   styleUrls: ['./markers.component.css']
@@ -8,6 +13,8 @@ import { LngLat, Map, Marker } from 'mapbox-gl';
 export class MarkersComponent implements AfterViewInit {
 
   @ViewChild('map') divMap?: ElementRef;
+
+  public markers: MarkerAndColor[] = [];
 
   public zoom: number = 13;
   public map?: Map;
@@ -54,6 +61,16 @@ export class MarkersComponent implements AfterViewInit {
     })
     .setLngLat(lngLat)
     .addTo(this.map);
+
+    this.markers.push({
+      color,
+      marker
+    });
+  }
+
+  deleteMarker(index: number) {
+    this.markers[index].marker.remove();
+    this.markers.splice(index, 1);
   }
 
 }
