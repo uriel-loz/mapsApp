@@ -73,4 +73,13 @@ export class MarkersComponent implements AfterViewInit {
     this.markers.splice(index, 1);
   }
 
+  flyTo(marker: Marker) {
+    if (!this.map) throw 'map is not defined';
+
+    this.map.flyTo({
+      zoom: 14,
+      center: marker.getLngLat()
+    });
+  }
+
 }
