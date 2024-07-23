@@ -74,12 +74,18 @@ export class MarkersComponent implements AfterViewInit {
       marker
     });
 
+    marker.on('dragend', () => {
+      this.saveToLocalStorage();
+    });
+
     this.saveToLocalStorage();
   }
 
   deleteMarker(index: number) : void {
     this.markers[index].marker.remove();
     this.markers.splice(index, 1);
+
+    this.saveToLocalStorage();
   }
 
   flyTo(marker: Marker) : void{
