@@ -8,9 +8,9 @@ import { FullScreenComponent } from './pages/full-screen/full-screen.component';
 import { MarkersComponent } from './pages/markers/markers.component';
 import { PropertiesComponent } from './pages/properties/properties.component';
 import { ZoomRangeComponent } from './pages/zoom-range/zoom-range.component';
-
+import { environment } from '../../environments/environment';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
-mapboxgl.accessToken = 'pk.eyJ1IjoidXJpLWxveiIsImEiOiJjbGducjkyN3UwYW1oM2VyNnR2NzlzbmgyIn0.EeTxmlMMCqnegstOn5qMIw';
+mapboxgl.accessToken = environment.MAPBOX_KEY;
 
 @NgModule({
   imports: [
